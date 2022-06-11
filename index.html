@@ -39,6 +39,25 @@
                 console.log(txt);
                 $("#data1").text("Chennai Gold Rate is "+txt);
             } });
+
+            var one = $("#data").text();
+            var two = $("#data1").text();
+
+            $.ajax({ 
+            url: 'https://api.webpushr.com/v1/notification/send/all',
+            headers: {
+                'webpushrKey':'59eb318a02f29f8b8a2bf9390f035a34',
+                'webpushrAuthToken':'52615',
+                'Content-Type':'application/json'
+            },
+            method: 'POST',
+            dataType: 'json',
+            dataString :'{"title":"Kar Rates","message":" '+one +"\n"+two+'","target_url":"https://www.webpushr.com"}',
+            success: function(data) {
+               
+                console.log(data);
+               
+            } });
      </script>
 
     <!-- start webpushr code --> <script>(function(w,d, s, id) {if(typeof(w.webpushr)!=='undefined') return;w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js, fjs = d.getElementsByTagName(s)[0];js = d.createElement(s); js.id = id;js.async=1;js.src = "https://cdn.webpushr.com/app.min.js";fjs.parentNode.appendChild(js);}(window,document, 'script', 'webpushr-jssdk'));webpushr('setup',{'key':'BLYVO9eFTZ9hy5-XMFOIO-p1jJgoqbZEdoVbWpFq1thLJUdkzumZynEaOEpg-D5Ktaq3fD8H6KVEaE9Vsjkiios' });</script><!-- end webpushr code -->
