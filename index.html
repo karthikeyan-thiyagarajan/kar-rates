@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.js"></script>
+    <title>Document</title>
+    <style>
+        body {
+            background-color: burlywood;
+        }
+    
+    </style>
+</head>
+<body>
+    <p id="data">data here</p>
+    <p id="data1">data here</p>
+     <script>
+        $.ajax({ 
+            url: 'https://www.ndtv.com/fuel-prices/petrol-price-in-ramanathapuram-city',
+            dataType: "html",
+            type: "post",
+            success: function(data) {
+                var parser = new DOMParser();
+                doc = parser.parseFromString(data, "text/html");
+                var txt = doc.querySelector("meta[name='description']").content.split(":")[0];
+                console.log(txt.split("is ")[1].split(" rupee")[0]);
+                $("#data").text(txt);
+            } });
+            
+            $.ajax({ 
+            url: 'https://www.google.com/search?q=chennai+gold+rate',
+            dataType: "html",
+            type: "get",
+            success: function(data) {
+                var parser = new DOMParser();
+                doc = parser.parseFromString(data, "text/html");
+                var txt = doc.getElementsByClassName("vlzY6d")[0].getElementsByTagName("span")[0].innerHTML;
+                console.log(txt);
+                $("#data1").text("Chennai Gold Rate is "+txt);
+            } });
+     </script>
+</body>
+</html>
